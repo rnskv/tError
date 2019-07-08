@@ -35,8 +35,9 @@ const TErrorCurrying = (groupParams, params) => {
 
 
 export class TErrorGroup {
-  constructor(params) {
+  constructor(params, errorsList) {
     this.type = params.type || 'GLOBAL_ERROR';
+    this.errorsList = errorsList || {};
     this.logger = null;
   }
 
@@ -45,14 +46,20 @@ export class TErrorGroup {
     return this;
   }
 
-  create(params) {
-    const { logger, type } = this;
+  create(errorType) {
+    const { logger, type, errorsList } = this;
 
     const groupParams = {
       type, logger
     };
 
-    return TErrorCurrying(groupParams, params)
+    const errorParams = errorsList[errorType];
+
+    if (!errorParams) {
+      throw new Error(`Error ${errorType} is missing in errors list.`)
+    }
+
+    return TErrorCurrying(groupParams, errorsList[errorType])
   }
 }
 

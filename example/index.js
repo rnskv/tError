@@ -6,15 +6,34 @@ const PAGE_NOT_FOUND = {
   code: 404 //HTTP code
 };
 
+const errorsList = {
+  PAGE_NOT_FOUND
+};
+
 const defaultParams = {
   type: 'CLIENT_ERROR'
 };
 
-const ClientError = new TErrorGroup(defaultParams).setLogger((err) => { console.log('Log: ', err) });
+const logger = (err) => {
+  console.log('Log:  Find error in group:', err.groupParams.type, err.stack)
+};
+
+
+
+
+
+
+
+
+
+
+const ClientError = new TErrorGroup(defaultParams, errorsList).setLogger(logger);
+
+
 
 try {
-  throw ClientError.create(PAGE_NOT_FOUND);
+  throw ClientError.create('PAGE_NOT_FOUND');
 } catch(err) {
-  console.log('Мирно говорим пользователю что произошла ошибка', err)
+  console.log('Catch error:', err)
 }
 
