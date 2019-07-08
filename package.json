@@ -1,0 +1,31 @@
+{
+  "name": "t-error",
+  "version": "1.0.0",
+  "description": "Error or terror?",
+  "main": "/lib/terror.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rnskv/tError.git"
+  },
+  "keywords": [
+    "error",
+    "logging",
+    "terror"
+  ],
+  "author": "rnskv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rnskv/tError/issues"
+  },
+  "homepage": "https://github.com/rnskv/tError#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
+  }
+}
