@@ -1,7 +1,7 @@
 {
   "name": "@rnskv/terror",
   "version": "1.0.5",
-  "description": "Error or terror?",
+  "description": "Simple and understandable custom error handling.",
   "main": "./package/index.js",
   "scripts": {
     "test": "jest",
@@ -14,7 +14,8 @@
   "keywords": [
     "error",
     "logging",
-    "terror"
+    "terror",
+    "error-handling"
   ],
   "author": "rnskv",
   "license": "ISC",
