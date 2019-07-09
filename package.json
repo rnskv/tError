@@ -1,5 +1,5 @@
 {
-  "name": "t-error",
+  "name": "@rnskv/terror",
   "version": "1.0.0",
   "description": "Error or terror?",
   "main": "/lib/terror.js",
