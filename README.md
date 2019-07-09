@@ -48,6 +48,7 @@ Because i want unify work with errors. Make it simple and clean.
   
   ### Third ###
   <p>It's simple :)</p>
+  
   ```
     try {
       throw ServerErrors.create('PAGE_NOT_FOUND');
@@ -57,9 +58,10 @@ Because i want unify work with errors. Make it simple and clean.
   ```
   
   # Logging
-  <p>You can connect your logger function to Errors Group. For example, use console.error. Connect it to ServerErrors</p>
+  <p>You can connect your logger function to Errors Group. For example, use console.error. Connect it to ServerErrors.</p>
+  
   ```
   ServerError.setLogger(console.error);
   ```
-  <p>Now every errors throw in this group will call console.error</p>
+  <p>Now every errors throw in this group will call console.error.</p>
 
