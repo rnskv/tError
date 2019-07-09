@@ -3,7 +3,7 @@ import { TErrorGroup } from '../package/index.js';
 const errorsList = {
   PAGE_NOT_FOUND: {
     message: 'Page not found :(', //Message for user
-    status: 'REQUEST_ERROR', //Status for logging
+    name: 'REQUEST_ERROR', //name for logging
     code: 404 //HTTP code
   }
 };

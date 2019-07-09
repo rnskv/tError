@@ -1,9 +1,15 @@
 import TErrorCurrying from './TErrorCurrying';
 import DefaultErrorsList from './DefaultErrorsList';
 
+const DEFAULT_PARAMS = {
+  groupType: 'GLOBAL_ERROR',
+  errorType: 'UNKNOWN_ERROR'
+};
+
+
 export default class TErrorGroup {
   constructor(params = {}, errorsList = {}) {
-    this.type = params.type || 'GLOBAL_ERROR';
+    this.type = params.type || DEFAULT_PARAMS.groupType;
     this.errorsList = {...errorsList, ...DefaultErrorsList} || DefaultErrorsList;
     this.logger = null;
   }
@@ -13,7 +19,7 @@ export default class TErrorGroup {
     return this;
   }
 
-  create(errorType = 'UNKNOWN_ERROR') {
+  create(errorType = DEFAULT_PARAMS.errorType) {
     const { logger, type, errorsList } = this;
 
     const groupParams = {
@@ -29,12 +35,3 @@ export default class TErrorGroup {
     return TErrorCurrying(groupParams, errorsList[errorType])
   }
 }
-
-
-//ERROR_GROUP INTERFACE
-/*
-type - ТИП ГРУППЫ ОШИБОК (Прим. GLOBAL_ERROR, CLIENT_ERROR, SERVE_ERROR, и т.д)
-logger функция принимающая параметром ошибку.
-errorsList - белый список ошибок
-
- */

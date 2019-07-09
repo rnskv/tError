@@ -1,3 +1,9 @@
+const DEFAULT_PARAMS = {
+  name: 'UNEXPECTED_ERROR',
+  message: 'Oooops. Something went wrong :/',
+  code: 500,
+};
+
 export default class TError extends Error {
   constructor(params) {
     if (!params) {
@@ -9,9 +15,9 @@ export default class TError extends Error {
     }
 
     const {
-      message = `Ooops. It's TError`,
-      code = 500,
-      status = 'SERVER_ERROR'
+      message = DEFAULT_PARAMS.message,
+      code = DEFAULT_PARAMS.code,
+      name = DEFAULT_PARAMS.name
     } = params;
 
     super(message);
@@ -22,16 +28,26 @@ export default class TError extends Error {
 
     this.message = message;
     this.code = code;
-    this.status = status;
+    this.name = name;
 
     this.callLogger(logger);
 
-    Error.captureStackTrace(this, TError);
+    Error.captureStackTrace(this, this.constructor);
   }
 
   callLogger(logger) {
     if (logger) {
       logger(this);
     }
+  }
+
+  get data() {
+    return {
+      name: this.name,
+      message: this.message,
+      code: this.code,
+      groupType: this.groupParams.type,
+      stack: this.stack
+    };
   }
 }
