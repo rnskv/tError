@@ -20,11 +20,33 @@ it('TErrorGroup generate error correctly with params', () => {
   expect(error.create).toThrow()
 });
 
+it('TErrorGroup generate error with true params', () => {
+  const errorsList = {
+    PAGE_NOT_FOUND: {
+      message: 'Page not found :(', //Message for user
+      name: 'REQUEST_ERROR', //Status for logging
+      code: 404 //HTTP code
+    }
+  };
+
+  const params = {
+    type: 'SERVER_ERROR'
+  };
+
+  const error = new TErrorGroup(params, errorsList);
+  const result = error.create('PAGE_NOT_FOUND');
+
+  expect(result.message).toBe(errorsList.PAGE_NOT_FOUND.message);
+  expect(result.name).toBe(errorsList.PAGE_NOT_FOUND.name);
+  expect(result.code).toBe(errorsList.PAGE_NOT_FOUND.code);
+});
+
 it('TErrorGroup generate error correctly without params', () => {
   const error = new TErrorGroup();
 
   expect(error.create).toThrow()
 });
+
 
 it('TErrorGroup error with undefined name', () => {
   const error = new TErrorGroup();
