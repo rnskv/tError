@@ -1,6 +1,6 @@
 {
   "name": "@rnskv/terror",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Error or terror?",
   "main": "./index.js",
   "scripts": {
