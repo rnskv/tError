@@ -2,9 +2,10 @@
   "name": "@rnskv/terror",
   "version": "1.0.2",
   "description": "Error or terror?",
-  "main": "/lib/terror.js",
+  "main": "./index.js",
   "scripts": {
-    "test": "echo \"No test specified\""
+    "test": "echo \"No test specified\"",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
