@@ -8,73 +8,60 @@ Because i want unify work with errors. Make it simple and clean.
 # Installing
   <h3>In terminal:</h3>
   <code>
-    => npm install terror
+   $ npm install @rnskv/terror
   </code>
   <h3>In code:</h3>
   
   ```
-  import TError from 'terror';
-
-  const CustomError = new TError(/* ERROR_TYPE */)
+  import { TErrorGroup } from '@rnskv/terror';
   ```
   
-# Setup
-
-  For working with errors you must create unique error's types for your project.
-  <h3>Example:</h3>
+# Setup #
+  ### For working with errors you must did next steps: ###
+  * Create errors white list;
+  * Create Errors Groups, using list from 1 step;
+  * Generate new errors in your code :).
   
-  <p>src/errors/types.js</p>
+  ### First ###
+ <p>For example, create list with 404 error. It's object where key is error's name, value - object with next fields: message, status, code.</p>
+ 
+  ```
+  const errorsList = {
+    PAGE_NOT_FOUND: {
+      message: 'Page not found :(', //Message for user
+      status: 'REQUEST_ERROR', //Status for logging
+      code: 404 //HTTP code
+    }
+  };
+  ```
+  ### Second ###
+  <p>Next create new Errors Group. You must specify type!</p>
   
   ```
-  export default const PAGE_NOT_FOUND = {
-    message: 'Page not found :(', //Message for user
-    status: 'REQUEST_ERROR', //Status for logging
-    code: 404 //HTTP code
-  }
-   ```
-   <p>then create your errors group</p>
-   
-   ``` 
-  import { PAGE_NOT_FOUND } from 'src/errors/types;
-
-  loggingHandle = function(error) {
-    console.log(`${error.status} - ${Date.now()}; trace: ${error.trace}`)
+  const params = {
+    type: 'SERVER_ERROR'
   };
-
-  allertHandle = function(error) {
-    alert(error.message)
-  };
-
-  const defaultParams = {
-    type: 'CLIENT_ERROR'
-  };
-    
-  const ClientError = new TError(defaultParams);
-
-  ClientError
-    .addHandle(loggingHandle)
-    .addHandle(allertHandle);
-
-  //or
-
-  ClientError.addHandlers([loggingHandle, allertHandle]); 
-   
-   ```
-   
-   
-  </code>
   
-# Using
-
-<p>
-Throwing new error call handlers stack:
-</p>
-
-```
-/*
-  Example with 404.
-*/
-
-throw new ClientError(PAGE_NOT_FOUND);
-```
+  const ServerErrors = new TErrorGroup(params, errorsList)
+  ```
+  <p>Great! Now you have new Errors Group and you can generate new errors.</p>
+  
+  ### Third ###
+  <p>It's simple :)</p>
+  
+  ```
+    try {
+      throw ServerErrors.create('PAGE_NOT_FOUND');
+    } catch(err) {
+      console.log('Catch error:', err)
+    }
+  ```
+  
+  # Logging
+  <p>You can connect your logger function to Errors Group. For example, use console.error. Connect it to ServerErrors.</p>
+  
+  ```
+  ServerError.setLogger(console.error);
+  ```
+  <p>Now every errors throw in this group will call console.error.</p>
 
