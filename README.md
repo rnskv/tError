@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/rnskv/tError.svg?branch=master)](https://travis-ci.org/rnskv/tError)
 # tError
 
 Extended from common error, class TError allows create and cofigurate custom errors. Error's configuration allow using logging, user alert, debugging simple and fast.
