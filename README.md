@@ -47,7 +47,7 @@ Because i want unify work with errors. Make it simple and clean.
   ```
   <p>Great! Now you have new Errors Group and you can generate new errors.</p>
   
-  <h3>Third<h3>
+  <h3>Third</h3>
   <p>It's simple :)</p>
   
   ```
@@ -59,6 +59,7 @@ Because i want unify work with errors. Make it simple and clean.
   ```
   
   <h1>Logging</h1>
+  
   <p>You can connect your logger function to Errors Group. For example, use console.error. Connect it to ServerErrors.</p>
   
   ```
