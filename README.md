@@ -19,12 +19,13 @@ Because i want unify work with errors. Make it simple and clean.
   
 <h1>Setup</h1>
   <h3>For working with errors you must did next steps:</h3>
+  
   * Create errors white list;
   * Create Errors Groups, using list from 1 step;
   * Generate new errors in your code :).
   
   <h3>First</h3>
- <p>For example, create list with 404 error. It's object where key is error's name, value - object with next fields: message, status, code.</p>
+ <p>For example, create list with 404 and 500 errors codes. It's object where key is error's name, value - object with next fields: message, status, code.</p>
  
   ```
   const errorsList = {
@@ -32,6 +33,11 @@ Because i want unify work with errors. Make it simple and clean.
       message: 'Page not found :(', //Message for user
       name: 'REQUEST_ERROR', //Name for logging
       code: 404 //HTTP code
+    },
+    INTERNAL_SERVER_ERROR: {
+      message: 'Internal Server Error', //Message for user
+      name: 'RESPONSE_ERROR', //Name for logging
+      code: 500 //HTTP code
     }
   };
   ```
@@ -53,8 +59,10 @@ Because i want unify work with errors. Make it simple and clean.
   ```
     try {
       throw ServerErrors.create('PAGE_NOT_FOUND');
-    } catch(err) {
-      console.log('Catch error:', err)
+      // Or
+      throw ServerErrors.create('INTERNAL_SERVER_ERROR');
+    } catch(error) {
+      console.log('Catch error:', error)
     }
   ```
   
