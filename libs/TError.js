@@ -1,5 +1,13 @@
 export default class TError extends Error {
   constructor(params) {
+    if (!params) {
+      throw new Error('Params is required in TError constructor');
+    }
+
+    if (!params.groupParams) {
+      throw new Error('Params.groupParams is required in TError constructor');
+    }
+
     const {
       message = `Ooops. It's TError`,
       code = 500,
@@ -22,6 +30,8 @@ export default class TError extends Error {
   }
 
   callLogger(logger) {
-    logger(this);
+    if (logger) {
+      logger(this);
+    }
   }
 }

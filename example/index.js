@@ -1,4 +1,4 @@
-import { TErrorGroup } from '../packages';
+import { TErrorGroup } from '../package/index.js';
 
 const errorsList = {
   PAGE_NOT_FOUND: {

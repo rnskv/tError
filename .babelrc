@@ -6,5 +6,19 @@
         "modules": false
       }
     ]
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "modules": "commonjs",
+            "debug": false
+          }
+        ],
+        "jest"
+      ]
+    }
+  }
 }

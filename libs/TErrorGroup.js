@@ -2,7 +2,7 @@ import TErrorCurrying from './TErrorCurrying';
 import DefaultErrorsList from './DefaultErrorsList';
 
 export default class TErrorGroup {
-  constructor(params, errorsList) {
+  constructor(params = {}, errorsList = {}) {
     this.type = params.type || 'GLOBAL_ERROR';
     this.errorsList = {...errorsList, ...DefaultErrorsList} || DefaultErrorsList;
     this.logger = null;

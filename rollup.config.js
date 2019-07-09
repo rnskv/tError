@@ -12,7 +12,9 @@ module.exports = {
   plugins: [
     json(),
     resolve(),
-    commonjs(),
+    commonjs({
+      ignore: id => /^[^.]/.test(id),
+    }),
     babel()
   ],
 };
