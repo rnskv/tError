@@ -1,9 +1,5 @@
 import { TErrorGroup } from '../packages';
 
-const logger = (err) => {
-  console.log('Log:  Find error in group:', err.groupParams.type, err.stack)
-};
-
 const errorsList = {
   PAGE_NOT_FOUND: {
     message: 'Page not found :(', //Message for user
@@ -13,14 +9,14 @@ const errorsList = {
 };
 
 const params = {
-  type: 'CLIENT_ERROR'
+  type: 'SERVER_ERROR'
 };
 
 
-const ClientError = new TErrorGroup(params, errorsList).setLogger(logger);
+const ServerError = new TErrorGroup(params, errorsList).setLogger(console.error);
 
 try {
-  throw ClientError.create('PAGE_NOT_FOUND');
+  throw ServerError.create('PAGE_NOT_FOUND');
 } catch(err) {
   console.log('Catch error:', err)
 }

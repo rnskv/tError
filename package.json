@@ -2,7 +2,7 @@
   "name": "@rnskv/terror",
   "version": "1.0.4",
   "description": "Error or terror?",
-  "main": "./index.js",
+  "main": "./package/index.js",
   "scripts": {
     "test": "echo \"No test specified\"",
     "build": "rollup -c"
