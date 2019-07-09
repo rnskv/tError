@@ -1,3 +1,6 @@
 example/
 .idea/
 .libs/
+.editorconfig
+rollup.config.js
+.babelrc
