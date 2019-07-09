@@ -1,4 +1,4 @@
-import { TErrorGroup } from '../libs';
+import { TErrorGroup } from '../packages';
 
 const logger = (err) => {
   console.log('Log:  Find error in group:', err.groupParams.type, err.stack)

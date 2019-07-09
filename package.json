@@ -5,7 +5,7 @@
   "main": "./index.js",
   "scripts": {
     "test": "echo \"No test specified\"",
-    "build": "webpack"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,10 @@
     "@babel/core": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
     "babel-loader": "^8.0.6",
-    "webpack": "^4.35.2",
-    "webpack-cli": "^3.3.5"
+    "rollup": "^1.16.7",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }
