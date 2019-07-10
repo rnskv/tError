@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/rnskv/tError.svg?branch=master)](https://travis-ci.org/rnskv/tError)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rnskv/tError/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rnskv/tError/?branch=master)
+
 <h1>tError</h1>
 
 Extended from common error, class TError allows create and cofigurate custom errors. Error's configuration allow using logging, user alert, debugging simple and fast.
