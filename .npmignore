@@ -1,5 +1,5 @@
 example/
-idea/
+.idea/
 libs/
 .editorconfig
 rollup.config.js
