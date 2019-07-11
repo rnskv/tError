@@ -12,6 +12,7 @@ export default class TErrorGroup {
     this.type = params.type || DEFAULT_PARAMS.groupType;
     this.errorsList = {...errorsList, ...DefaultErrorsList} || DefaultErrorsList;
     this.logger = null;
+    this.handler = null;
   }
 
   setLogger(fn) {
@@ -19,11 +20,16 @@ export default class TErrorGroup {
     return this;
   }
 
+  setHandler(fn) {
+    this.handler = fn;
+    return this;
+  }
+
   create(errorType = DEFAULT_PARAMS.errorType) {
-    const { logger, type, errorsList } = this;
+    const { logger, handler, type, errorsList } = this;
 
     const groupParams = {
-      type, logger
+      type, logger, handler
     };
 
     const errorParams = errorsList[errorType];

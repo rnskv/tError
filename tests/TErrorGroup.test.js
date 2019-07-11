@@ -52,9 +52,25 @@ it('TErrorGroup error with undefined name', () => {
   const error = new TErrorGroup();
   const errorType = 'ABCD';
 
-  function create() {
+  const create = function() {
     error.create(errorType);
-  }
+  };
 
   expect(create).toThrow(new Error(`Error ${errorType} is missing in errors list.`))
+});
+
+it('TErrorGroup must set logger', () => {
+  const error = new TErrorGroup();
+  const fn = () => {};
+  error.setLogger(fn);
+
+  expect(error.logger).toEqual(fn)
+});
+
+it('TErrorGroup must set handler', () => {
+  const error = new TErrorGroup();
+  const fn = () => {};
+  error.setHandler(fn);
+
+  expect(error.handler).toEqual(fn)
 });

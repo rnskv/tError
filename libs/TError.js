@@ -22,7 +22,7 @@ export default class TError extends Error {
 
     super(message);
 
-    const { logger, ...groupParams} = params.groupParams;
+    const { handler, logger, ...groupParams} = params.groupParams;
 
     this.groupParams = groupParams;
 
@@ -31,6 +31,7 @@ export default class TError extends Error {
     this.name = name;
 
     this.callLogger(logger);
+    this.callHandler(handler);
 
     Error.captureStackTrace(this, this.constructor);
   }
@@ -38,6 +39,12 @@ export default class TError extends Error {
   callLogger(logger) {
     if (logger) {
       logger(this);
+    }
+  }
+
+  callHandler(handler) {
+    if (handler) {
+      handler(this);
     }
   }
 
