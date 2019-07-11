@@ -1,6 +1,6 @@
 {
   "name": "@rnskv/terror",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Simple and understandable custom error handling.",
   "main": "./package/index.js",
   "scripts": {
